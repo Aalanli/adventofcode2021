@@ -8,6 +8,7 @@ main = do
     let numb = countWindow intContents
     captionPrint "Part B: " numb
 
+
 count' :: [Int] -> Int 
 count' [] = 0
 count' [_] = 0

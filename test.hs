@@ -1,4 +1,5 @@
 {-
->>> "forward" == "forWard"
-False
+>>> k = (==1) . head
+>>> k [1, 2, 3, 4]
+True
 -}
