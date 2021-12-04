@@ -30,13 +30,6 @@ recurseFilter f xs
         a = f (map head xs) 
         filtered = filter ((==a) . head) xs
 
-
-transpose :: [[a]] -> [[a]]
-transpose [] = []
-transpose xs
-    | null (head xs) = []
-    | otherwise = [head x | x <- xs]:transpose [tail x | x <- xs]
-
 convertBin :: String -> Int 
 convertBin h = convertBin' (length h - 1) h
     where

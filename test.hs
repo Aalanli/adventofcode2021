@@ -1,5 +1,8 @@
+import Utils
 {-
->>> k = (==1) . head
->>> k [1, 2, 3, 4]
-True
+>>> :t repeat
+repeat :: a -> [a]
+
+>>> :t any
+any :: Foldable t => (a -> Bool) -> t a -> Bool
 -}
