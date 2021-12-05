@@ -1,8 +1,12 @@
 import Utils
+import Data.Map (Map)
+import qualified Data.Map as Map
 {-
->>> :t repeat
-repeat :: a -> [a]
+>>> take 3 [9..9]
+[9]
 
->>> :t any
-any :: Foldable t => (a -> Bool) -> t a -> Bool
 -}
+
+a = Map.empty :: Map (Int, Int) Int
+b = Map.insert (1, 0) 1 a
+c = Map.adjust (+1) (1, 0) b
