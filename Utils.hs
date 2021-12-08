@@ -74,3 +74,9 @@ convertPair :: [String] -> [(String, Int)]
 convertPair [] = []
 convertPair (x:xs) = (head strPair, read (last strPair)):convertPair xs
     where strPair = words x
+
+count :: (a -> Bool) -> [a] -> Int
+count _ [] = 0
+count f (x:xs)
+    | f x = 1 + count f xs
+    | otherwise = count f xs

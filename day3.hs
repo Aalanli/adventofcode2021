@@ -9,7 +9,7 @@ main = do
     raw <- readFile "3.txt"
     let contents = lines raw
     let transposed = transpose contents
-    let counting x = (count '0' x, count '1' x)
+    let counting x = (count (=='0') x, count (=='1') x)
     let counts = map counting transposed
     let binary = map (\(a, b) -> if b > a then '1' else '0') counts
     let binary' = map (\x -> if x == '0' then '1' else '0') binary
@@ -39,5 +39,3 @@ convertBin h = convertBin' (length h - 1) h
             | x == '1' = 2 ^ n + convertBin' (n-1) xs
             | otherwise = convertBin' (n-1) xs
 
-count :: (Eq a) => a -> [a] -> Int
-count a = length . filter (==a)
