@@ -1,5 +1,5 @@
 module Utils where
-
+import Data.List (sort)
 
 removeIth :: Int -> [a] -> [a]
 removeIth i xs = take i xs ++ drop (1 + i) xs
@@ -42,7 +42,7 @@ split v xs
     | not (null sHead) = sHead:split v sTail
     | not (null sTail) = split v sTail
     | otherwise = [xs]
-    where 
+    where
         len = length v
         (sHead, sTail') = cutAt (\x -> take len x == v) xs
         sTail = drop len sTail'
@@ -62,6 +62,9 @@ transpose xs
     | null (head xs) = []
     | otherwise = [head x | x <- xs]:transpose [tail x | x <- xs]
 
+unsqueeze :: [a] -> [[a]]
+unsqueeze = map (: [])
+
 listRead :: String -> IO [Int]
 listRead file = do
     contents  <- readFile file
@@ -80,3 +83,9 @@ count _ [] = 0
 count f (x:xs)
     | f x = 1 + count f xs
     | otherwise = count f xs
+
+mid :: Ord a => [a] -> a
+mid xs = xs' !! ls
+    where 
+        xs' = sort xs
+        ls = length xs `div` 2
