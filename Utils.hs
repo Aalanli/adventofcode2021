@@ -1,6 +1,9 @@
 module Utils where
 import Data.List (sort)
 
+import Data.Set (Set)
+import qualified Data.Set as Set
+
 removeIth :: Int -> [a] -> [a]
 removeIth i xs = take i xs ++ drop (1 + i) xs
 
@@ -89,3 +92,19 @@ mid xs = xs' !! ls
     where 
         xs' = sort xs
         ls = length xs `div` 2
+
+printByCol :: Show a => [a] -> IO ()
+printByCol [] = return ()
+printByCol (x:xs) = do
+    print x
+    printByCol xs
+
+
+interweave :: a -> [a] -> [[a]]
+interweave = interweave' id
+    where 
+        interweave' f a [] = [f [a]]
+        interweave' f a (x:xs) = f (a:x:xs) : interweave' (f . (x:)) a xs 
+
+joinSet :: Ord a => Set a -> [a] -> Set a
+joinSet = foldr Set.insert

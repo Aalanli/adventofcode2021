@@ -4,6 +4,8 @@ import qualified Data.Set as Set
 import Data.List (sort, product, sortOn)
 import qualified Data.Ord
 
+
+main :: IO ()
 main = do
     input <- map (map read . unsqueeze) . lines <$> readFile "9.txt" :: IO [[Int]]
     let boolMap = lowest2D input
