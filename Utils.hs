@@ -4,6 +4,9 @@ import Data.List (sort)
 import Data.Set (Set)
 import qualified Data.Set as Set
 
+removeDuplicates :: Ord a => [a] -> [a]
+removeDuplicates = Set.toList . Set.fromList
+
 removeIth :: Int -> [a] -> [a]
 removeIth i xs = take i xs ++ drop (1 + i) xs
 
