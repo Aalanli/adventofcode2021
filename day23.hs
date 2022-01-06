@@ -25,8 +25,9 @@ main = do
     let minScore = solve Set.empty rooms'
     print minScore
 
-roomDepth = 4
 
+roomDepth :: Int
+roomDepth = 4
 
 solve :: Hallway -> Rooms -> Maybe Int
 solve = solve'
